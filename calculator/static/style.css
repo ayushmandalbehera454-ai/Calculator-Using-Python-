@@ -1,0 +1,87 @@
+:root {
+  --page: #E6EAEE;
+  --body: #FFFFFF;
+  --ink: #1B2430;
+  --muted: #5D6B7C;
+  --key: #EEF1F5;
+  --key-op: #D9E0E8;
+  --accent: #2F6FED;
+  --accent-ink: #FFFFFF;
+  --danger: #B8433A;
+  --tape: #FBFBF8;
+  --line: #CBD3DC;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #0F151D;
+    --body: #1B2430;
+    --ink: #F2F5F8;
+    --muted: #8FA3BA;
+    --key: #2A3646;
+    --key-op: #3A4A60;
+    --accent: #5B8DF5;
+    --accent-ink: #0F151D;
+    --danger: #E07A71;
+    --tape: #151C26;
+    --line: #34435A;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  background: var(--page);
+  color: var(--ink);
+  font-family: "Instrument Sans", system-ui, sans-serif;
+}
+.shell {
+  display: flex; flex-wrap: wrap; gap: 20px;
+  justify-content: center; align-items: flex-start;
+  padding: 32px 16px;
+}
+.calc {
+  width: 340px; max-width: 100%;
+  background: var(--body); border-radius: 18px; padding: 16px;
+}
+.expr {
+  width: 100%; border: 0; background: transparent; color: var(--ink);
+  font: 500 28px "IBM Plex Mono", monospace; text-align: right;
+  padding: 10px 4px 2px; outline: none;
+}
+.out {
+  display: block; min-height: 26px; text-align: right; padding: 0 4px 10px;
+  font: 400 16px "IBM Plex Mono", monospace; color: var(--muted);
+}
+.out.error { color: var(--danger); }
+.keys { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.keys button {
+  height: 52px; border: 0; border-radius: 10px; cursor: pointer;
+  background: var(--key); color: var(--ink);
+  font: 600 18px "Instrument Sans", sans-serif;
+}
+.keys button.op { background: var(--key-op); }
+.keys button.eq { background: var(--accent); color: var(--accent-ink); }
+.keys button.clear { color: var(--danger); }
+.keys button:active { transform: translateY(1px); }
+button:focus-visible, input:focus-visible, li:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.tape {
+  width: 300px; max-width: 100%; min-height: 200px;
+  background: var(--tape); border: 1px solid var(--line);
+  border-radius: 4px; padding: 14px 16px;
+}
+.tape header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+.tape h2 { margin: 0; font-size: 16px; font-weight: 600; }
+.link {
+  background: none; border: 0; color: var(--muted); cursor: pointer;
+  font: 500 13px "Instrument Sans", sans-serif; text-decoration: underline;
+}
+.tape ol { list-style: none; margin: 0; padding: 0; max-height: 420px; overflow-y: auto; }
+.tape li {
+  display: block; width: 100%; text-align: right; padding: 8px 0;
+  border-bottom: 1px dashed var(--line); cursor: pointer;
+  font: 400 14px "IBM Plex Mono", monospace; color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.tape li strong { display: block; color: var(--ink); font-weight: 500; font-size: 17px; }
+.empty { color: var(--muted); font-size: 14px; margin: 8px 0 0; }
+@media (prefers-reduced-motion: reduce) { .keys button:active { transform: none; } }

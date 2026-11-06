@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="shell">
+    <section class="calc" aria-label="Calculator">
+      <input id="expr" class="expr" type="text" autocomplete="off"
+             spellcheck="false" placeholder="0" aria-label="Expression">
+      <output id="out" class="out" aria-live="polite"></output>
+      <div id="keys" class="keys"></div>
+    </section>
+
+    <aside class="tape" aria-label="History">
+      <header>
+        <h2>Tape</h2>
+        <button id="clear-tape" class="link" type="button">Clear history</button>
+      </header>
+      <ol id="tape-list"></ol>
+      <p id="tape-empty" class="empty">Your calculations will appear here.</p>
+    </aside>
+  </main>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
